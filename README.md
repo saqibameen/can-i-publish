@@ -12,6 +12,8 @@
   <a href="https://github.com/saqibameen/can-i-publish/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/can-i-publish.svg?style=flat-square" alt="license" /></a>
 </p>
 
+---
+
 ## The Problem
 
 You check if a package name is available on npm. It says yes. You build the whole thing. You run `npm publish`. Boom:
@@ -26,6 +28,8 @@ npm has an **undocumented similarity filter** that blocks names even if they don
 
 > [!NOTE]
 > Similarity filter testing requires `npm login`. Without it, registry and squatter checks still work.
+
+---
 
 ### `npm-name-cli` vs `can-i-publish`
 
@@ -54,6 +58,8 @@ Other names you can verify: `reacto`, `expresss`, `loadash`, `chulk`.
 | Shows similar packages | No | Yes |
 | Suggests alternatives | No | Yes (`--suggest`) |
 
+---
+
 ## Install
 
 ```bash
@@ -65,6 +71,8 @@ Or install globally:
 ```bash
 npm install -g can-i-publish
 ```
+
+---
 
 ## Usage
 
@@ -85,6 +93,8 @@ can-i-publish dxkit --suggest
 can-i-publish my-package --json
 ```
 
+---
+
 ## Output
 
 ```bash
@@ -98,12 +108,16 @@ $ can-i-publish abc123 chalk dxkit my-cool-tool @ava
 ✖ @ava is unavailable (https://www.npmjs.com/org/ava)
 ```
 
+---
+
 ## How It Works
 
 1. **Validates** the name against npm naming rules (lowercase, no spaces, under 214 chars)
 2. **Checks the registry** to see if the package already exists
 3. **Detects squatters** — flags packages that exist but appear abandoned (low downloads, no readme, no prod version)
 4. **Tests the similarity filter** by attempting a publish probe against the npm registry using your npm credentials
+
+---
 
 ## Options
 
@@ -113,6 +127,8 @@ $ can-i-publish abc123 chalk dxkit my-cool-tool @ava
 | `-j, --json` | Output results as JSON |
 | `-V, --version` | Show version |
 | `-h, --help` | Show help |
+
+---
 
 ## Exit Codes
 
@@ -125,6 +141,8 @@ Useful for CI/scripting:
 can-i-publish my-package && npm publish
 ```
 
+---
+
 ## Programmatic API
 
 ```typescript
@@ -136,6 +154,8 @@ const result = await checkName({ name: 'my-package' });
 const suggestions = await suggestNames({ name: 'dxkit', limit: 5 });
 // [{ name: 'dxkit-cli', status: 'available' }, ...]
 ```
+
+---
 
 ## Credits
 
