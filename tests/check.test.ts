@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { checkName, checkOrg, checkRegistry, isSquatted, extractSimilarNames } from '../src/check.js';
+import { checkName, checkOrg, checkRegistry, checkSimilarity, isSquatted, extractSimilarNames } from '../src/check.js';
 
 describe('checkRegistry', { timeout: 10000 }, () => {
   it('returns "exists" for a known package', async () => {
@@ -68,6 +68,38 @@ describe('isSquatted', { timeout: 10000 }, () => {
   it('returns false for a popular package', async () => {
     const result = await isSquatted({ name: 'chalk' });
     expect(result).toBe(false);
+  });
+});
+
+describe('checkSimilarity', { timeout: 10000 }, () => {
+  it('returns checked: false when no token is available', async () => {
+    const originalToken = process.env.NPM_TOKEN;
+    const originalHome = process.env.HOME;
+    process.env.NPM_TOKEN = '';
+    process.env.HOME = '/tmp/nonexistent-home';
+    try {
+      const result = await checkSimilarity({ name: 'zzzz-test-no-token' });
+      expect(result.checked).toBe(false);
+      expect(result.blocked).toBe(false);
+    } finally {
+      process.env.NPM_TOKEN = originalToken ?? '';
+      process.env.HOME = originalHome ?? '';
+    }
+  });
+
+  it('includes login hint when similarity is not checked', async () => {
+    const originalToken = process.env.NPM_TOKEN;
+    const originalHome = process.env.HOME;
+    process.env.NPM_TOKEN = '';
+    process.env.HOME = '/tmp/nonexistent-home';
+    try {
+      const result = await checkName({ name: 'zzzz-test-no-token-hint' });
+      expect(result.status).toBe('available');
+      expect(result.reason).toMatch(/npm login/);
+    } finally {
+      process.env.NPM_TOKEN = originalToken ?? '';
+      process.env.HOME = originalHome ?? '';
+    }
   });
 });
 

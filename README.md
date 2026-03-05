@@ -102,7 +102,8 @@ $ can-i-publish abc123 chalk dxkit my-cool-tool @ava
 3. **Detects squatters** — flags packages that exist but appear abandoned (low downloads, no readme, no prod version)
 4. **Tests the similarity filter** by attempting a publish probe against the npm registry using your npm credentials
 
-Step 4 requires npm credentials. Run `npm login` first, or set `NPM_TOKEN` as an environment variable. If you're not logged in, `can-i-publish` will still check steps 1-3 and let you know that similarity wasn't tested.
+> [!NOTE]
+> Step 4 requires npm credentials. Run `npm login` first, or set `NPM_TOKEN` as an environment variable. If you're not logged in, `can-i-publish` will still check steps 1-3 and let you know that similarity wasn't tested.
 
 ## Options
 

@@ -1,6 +1,6 @@
 {
   "name": "can-i-publish",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Check if your npm package name is actually publishable. Tests against npm's undocumented similarity filter.",
   "type": "module",
   "bin": {
