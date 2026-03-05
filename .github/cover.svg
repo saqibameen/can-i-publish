@@ -48,7 +48,13 @@
   </text>
 
   <!-- Footer -->
-  <text x="640" y="600" text-anchor="middle" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="12" fill="#444444" letter-spacing="0.5">
-    commandcode.ai
+  <text x="610" y="600" text-anchor="middle" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="12" fill="#444444" letter-spacing="0.5">
+    saqibameen.com
+  </text>
+  <text x="640" y="600" text-anchor="middle" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="12" fill="#333333" letter-spacing="0.5">
+    ·
+  </text>
+  <text x="670" y="600" text-anchor="middle" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="12" fill="#444444" letter-spacing="0.5">
+    x.com/saqibameen
   </text>
 </svg>
