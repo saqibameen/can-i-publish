@@ -1,0 +1,71 @@
+{
+  "name": "can-i-publish",
+  "version": "0.0.4",
+  "description": "Check if your npm package name is actually publishable. Tests against npm's undocumented similarity filter.",
+  "type": "module",
+  "bin": {
+    "can-i-publish": "dist/cli.js",
+    "canipublish": "dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "release": "changeset publish",
+    "version": "changeset version",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "npm",
+    "package-name",
+    "publish",
+    "availability",
+    "cli",
+    "npm-name",
+    "similarity",
+    "registry",
+    "validate"
+  ],
+  "author": {
+    "name": "Saqib Ameen",
+    "url": "https://x.com/saqibameen"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saqibameen/can-i-publish.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saqibameen/can-i-publish/issues"
+  },
+  "homepage": "https://github.com/saqibameen/can-i-publish#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.30.0",
+    "@types/node": "^25.3.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "ora": "^9.3.0",
+    "picocolors": "^1.1.1"
+  }
+}
