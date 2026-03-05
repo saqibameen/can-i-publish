@@ -24,6 +24,9 @@ npm has an **undocumented similarity filter** that blocks names even if they don
 
 `can-i-publish` actually tests publishability by checking both the registry AND the similarity filter.
 
+> [!NOTE]
+> Similarity filter testing requires `npm login`. Without it, registry and squatter checks still work.
+
 ### `npm-name-cli` vs `can-i-publish`
 
 Try it yourself — check `dxkit`, a name that looks available but is actually blocked:
@@ -101,9 +104,6 @@ $ can-i-publish abc123 chalk dxkit my-cool-tool @ava
 2. **Checks the registry** to see if the package already exists
 3. **Detects squatters** — flags packages that exist but appear abandoned (low downloads, no readme, no prod version)
 4. **Tests the similarity filter** by attempting a publish probe against the npm registry using your npm credentials
-
-> [!NOTE]
-> Step 4 requires npm credentials. Run `npm login` first, or set `NPM_TOKEN` as an environment variable. If you're not logged in, `can-i-publish` will still check steps 1-3 and let you know that similarity wasn't tested.
 
 ## Options
 
