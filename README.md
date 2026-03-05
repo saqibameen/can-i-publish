@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/cover.svg" alt="can-i-publish" />
+  <img src=".github/cover.svg?v=2" alt="can-i-publish" />
 </p>
 
 <p align="center">
